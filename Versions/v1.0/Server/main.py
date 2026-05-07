@@ -5,6 +5,8 @@ from database_module import *
 from telebot import types, apihelper
 from meteo_module import get_weather_full
 
+apihelper.proxy = {'https': 'socks5h://127.0.0.1:25590'}
+
 TOKEN = "ТОКЕН БОТА"
 bot = telebot.TeleBot(TOKEN)
 app = Flask(__name__)
