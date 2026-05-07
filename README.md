@@ -39,7 +39,7 @@ pip install pyTelegramBotAPI Flask requests pandas openmeteo-requests requests-c
 
 1. **Клонируйте репозиторий:**
    ```bash
-   git clone [https://github.com/An10An10/SensorMeteo.git]
+   git clone https://github.com/An10An10/SensorMeteo.git
    cd SensorMeteo
    ```
 
