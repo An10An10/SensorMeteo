@@ -59,6 +59,11 @@ def process_region_step(message):
         bot.register_next_step_handler(msg, process_region_step)
 
 
+def get_status_text(val, unit, is_supported=True):
+    if val == -1 or val == -1.0 or not is_supported:
+        return "❌ _не поддерживается_"
+    return f"`{val}` {unit}"
+
 @bot.message_handler(commands=['mysens'])
 def mysens_handler(m):
     data = get_full_user_data(m.from_user.id)
@@ -68,13 +73,19 @@ def mysens_handler(m):
     
     text = f"🏠 **Регион:** `{data['mesto']}`\n"
     text += "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n"
+    
     for s in data['sensors']:
         if 't' in s:
+            t_text = get_status_text(s.get('t'), "°C")
+            h_text = get_status_text(s.get('h'), "%")
+            p_text = get_status_text(s.get('p'), "мм рт. ст.")
+
             text += (f"🔹 **ID {s['id']}**:\n"
-                     f"🌡 {s['t']}°C | 💧 {s['h']}% \n"
-                     f"🔽 {s['p']} мм рт. ст.\n\n")
+                     f"🌡 Темп: {t_text}\n"
+                     f"💧 Влаж: {h_text}\n"
+                     f"🔽 Давл: {p_text}\n\n")
         else:
-            text += f"🔸 **ID {s['id']}**: нет данных\n\n"
+            text += f"🔸 **ID {s['id']}**: _нет данных от датчика_\n\n"
     
     bot.send_message(m.chat.id, text, parse_mode="Markdown")
 
