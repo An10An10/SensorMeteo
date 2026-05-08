@@ -2,10 +2,10 @@
 #include <ESP8266HTTPClient.h>
 #include <DHT.h>
 
-WIFI_SSID = "WIFI_SSID"
-WIFI_PASS = "WIFI_PASS"
-
-ID = "1"
+String WIFI_SSID = "WIFI_SSID";
+String WIFI_PASS = "WIFI_PASS";
+  
+String ID = "1";
   
 #define DHTPIN 2     // Пин D4
 DHT dht(DHTPIN, DHT22);
