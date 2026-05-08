@@ -7,7 +7,7 @@
 Adafruit_BMP280 bmp; 
 
 WIFI_SSID = "WIFI_SSID"
-WIFI_PASS = "IFI_PASS"
+WIFI_PASS = "WIFI_PASS"
 ID = "1"
 
 DHT dht(2, DHT11);
