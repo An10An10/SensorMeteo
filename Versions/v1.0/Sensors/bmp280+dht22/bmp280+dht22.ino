@@ -6,14 +6,14 @@
 
 Adafruit_BMP280 bmp; 
 
-WIFI_SSID = "WIFI_SSID"
-WIFI_PASS = "IFI_PASS"
-ID = "1"
+String WIFI_SSID = "WIFI_SSID";
+String WIFI_PASS = "WIFI_PASS";
+String ID = "1";
 
 DHT dht(2, DHT22);
 void setup() {
   Serial.begin(115200);
-  bmp.begin(0x76);
+  bmp.begin(0x76); // если не работает то 0x77
   dht.begin();
   WiFi.begin(WIFI_SSID, WIFI_PASS);
   while (WiFi.status() != WL_CONNECTED) delay(500);
