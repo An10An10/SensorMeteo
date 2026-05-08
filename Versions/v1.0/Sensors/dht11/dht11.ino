@@ -4,6 +4,8 @@
 
 WIFI_SSID = "WIFI_SSID"
 WIFI_PASS = "WIFI_PASS"
+  
+ID = "1"
 
 #define DHTPIN 2     // Пин D4
 DHT dht(DHTPIN, DHT11);
@@ -27,7 +29,7 @@ void loop() {
     WiFiClient client;
     HTTPClient http;
     http.begin(client, "http://leoplng.ru:25580/update");
-    http.addHeader("id", "101");
+    http.addHeader("id", ID);
     String postData = String(t) + "," + String(h) + ",-1.0";
     http.POST(postData);
     http.end();
