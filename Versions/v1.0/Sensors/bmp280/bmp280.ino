@@ -5,13 +5,13 @@
 
 Adafruit_BMP280 bmp;
 
-WIFI_SSID = "WIFI_SSID"
-WIFI_PASS = "WIFI_PASS"
-ID = "1"
+String WIFI_SSID = "WIFI_SSID";
+String WIFI_PASS = "WIFI_PASS";
+String ID = "1";
 
 void setup() {
   Serial.begin(115200);
-  if (!bmp.begin(0x76)) { Serial.println("BMP280 error"); }
+  if (!bmp.begin(0x76)) { Serial.println("BMP280 error"); } // или 0x77
   WiFi.begin(WIFI_SSID, WIFI_PASS);
   while (WiFi.status() != WL_CONNECTED) delay(500);
 }
